@@ -1,0 +1,9 @@
+name: DeathPoint
+version: '${version}'
+main: ua.wgs.mcs.deathpoint.DeathPoint
+api-version: 1.19
+prefix: DeathPoint
+load: STARTUP
+authors: [ WoodyGamesStudio ]
+description: Writes the place of death of the player in the chat
+website: https://empty.null
