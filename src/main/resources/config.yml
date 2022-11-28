@@ -1,0 +1,2 @@
+messages:
+  playerDeathPoint: 'Player {PLAYER} died at coordinates X: {X} Y: {Y} Z: {Z}'
