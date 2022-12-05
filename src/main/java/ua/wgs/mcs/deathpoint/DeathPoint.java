@@ -3,7 +3,7 @@ package ua.wgs.mcs.deathpoint;
 import org.bukkit.Server;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import ua.wgs.mcs.deathpoint.events.MainEventHandler;
+import ua.wgs.mcs.deathpoint.events.OnPlayerDeathEventHandler;
 
 @SuppressWarnings("unused")
 public final class DeathPoint extends JavaPlugin {
@@ -18,7 +18,7 @@ public final class DeathPoint extends JavaPlugin {
 
         saveDefaultConfig();
 
-        pluginManager.registerEvents(new MainEventHandler(), this);
+        pluginManager.registerEvents(new OnPlayerDeathEventHandler(), this);
     }
 
     public static DeathPoint getPlugin() {
