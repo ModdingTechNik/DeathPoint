@@ -21,29 +21,50 @@ public final class OnPlayerDeathEventHandler implements Listener {
         Server server = player.getServer();
         Location playerLocation = player.getLocation();
 
-        String pattern = DeathPoint.getPlugin().getConfig().getString(
-                "messages.playerDeathAtPoint",
-                "<gray><player><gray/> died at <green><location><green/>");
+        String broadcastTemplate = DeathPoint.getPlugin().getConfig().getString(
+                "messages.PlayerDeathAtLocation.broadcast",
+                "messages.PlayerDeathAtLocation.broadcast");
 
-        Component message = MiniMessage.miniMessage().deserialize(pattern,
+        String playerSuggestTemplate = DeathPoint.getPlugin().getConfig().getString(
+                "messages.PlayerDeathAtLocation.components.player.suggest",
+                "messages.PlayerDeathAtLocation.components.player.suggest");
+
+        String locationTemplate = DeathPoint.getPlugin().getConfig().getString(
+                "messages.PlayerDeathAtLocation.components.location.template",
+                "messages.PlayerDeathAtLocation.components.location.template");
+
+        String locationHoverTemplate = DeathPoint.getPlugin().getConfig().getString(
+                "messages.PlayerDeathAtLocation.components.location.hover",
+                "messages.PlayerDeathAtLocation.components.location.hover");
+
+        String locationSuggestTemplate = DeathPoint.getPlugin().getConfig().getString(
+                "messages.PlayerDeathAtLocation.components.location.suggest",
+                "messages.PlayerDeathAtLocation.components.location.suggest");
+
+        String playerSuggest = playerSuggestTemplate.replace("<name>", player.getName());
+
+        String locationSuggest = locationSuggestTemplate
+                .replace("<x>", String.valueOf((int) playerLocation.getX()))
+                .replace("<y>", String.valueOf((int) playerLocation.getY()))
+                .replace("<z>", String.valueOf((int) playerLocation.getZ()));
+
+        Component playerLocationComponent = MiniMessage.miniMessage().deserialize(locationTemplate,
+                Placeholder.parsed("x", String.valueOf((int) playerLocation.getX())),
+                Placeholder.parsed("y", String.valueOf((int) playerLocation.getY())),
+                Placeholder.parsed("z", String.valueOf((int) playerLocation.getZ())));
+
+        Component locationHoverComponent = MiniMessage.miniMessage().deserialize(locationHoverTemplate);
+
+        Component messageComponent = MiniMessage.miniMessage().deserialize(broadcastTemplate,
                 Placeholder.component("player", Component
                         .text(player.getName())
                         .hoverEvent(HoverEvent.showText(Component.text(player.getName() + "\n" + player.getUniqueId())))
-                        .clickEvent(ClickEvent.suggestCommand("/tell " + player.getName() + " "))),
-                Placeholder.component("location", Component
-                        .text(LocationToRawString(playerLocation))
-                        .hoverEvent(HoverEvent.showText(Component.text("Click to suggest command")))
-                        .clickEvent(ClickEvent.suggestCommand("/tp " + LocationToRawString(playerLocation)))));
+                        .clickEvent(ClickEvent.suggestCommand(playerSuggest))),
+                Placeholder.component("location", playerLocationComponent
+                        .hoverEvent(HoverEvent.showText(locationHoverComponent))
+                        .clickEvent(ClickEvent.suggestCommand(locationSuggest))));
 
-        server.broadcast(message);
-    }
-
-    private static String LocationToRawString(Location playerLocation) {
-        return String.valueOf((int)playerLocation.getX()) +
-                ' ' +
-                (int)playerLocation.getY() +
-                ' ' +
-                (int)playerLocation.getZ();
+        server.broadcast(messageComponent);
     }
 }
 
