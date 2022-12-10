@@ -1,5 +1,5 @@
 PlayerDeathAtLocation:
-  broadcast: '<player> died at <green><location></green>'
+  broadcast: '<player> died at coordinates <green><location></green>'
   components:
     player:
       suggest: '/tell <name> '
@@ -7,3 +7,7 @@ PlayerDeathAtLocation:
       template: '[<x>, <y>, <z>]'
       hover: 'Click to suggest teleport command'
       suggest: '/tp @s <x> <y> <z>'
+DeathPoint:
+  reload:
+    config: 'DeathPoint config reloaded successfully'
+    translation: 'DeathPoint translation reloaded successfully'

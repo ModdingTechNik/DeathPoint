@@ -21,7 +21,7 @@ public final class OnPlayerDeathEventHandler implements Listener {
         Player player = e.getPlayer();
         Server server = player.getServer();
         Location playerLocation = player.getLocation();
-        TranslationConfig translation = DeathPoint.getTranslation();
+        TranslationConfig translation = DeathPoint.translation();
 
         String broadcastTemplate = translation.getString("PlayerDeathAtLocation.broadcast");
         String playerSuggestTemplate = translation.getString("PlayerDeathAtLocation.components.player.suggest");

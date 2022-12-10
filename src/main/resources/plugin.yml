@@ -7,3 +7,8 @@ load: STARTUP
 authors: [ WoodyGamesStudio ]
 description: Writes the place of death of the player in the chat
 website: https://empty.null
+commands:
+  deathpoint:
+    description: 'deathpoint plugin management'
+    usage: '/deathpoint reload [config|translation]'
+    permission: 'deathpoint.deathpoint'

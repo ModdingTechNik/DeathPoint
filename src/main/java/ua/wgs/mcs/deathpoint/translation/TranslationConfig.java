@@ -9,10 +9,16 @@ import java.io.File;
 import java.io.IOException;
 
 public final class TranslationConfig {
-    private final FileConfiguration configuration;
+    private final File file;
+    private FileConfiguration configuration;
 
     public TranslationConfig(String name) {
-        File file = new File(DeathPoint.getEnvironment().dataFolder(), "lang/" + name);
+       this.file = new File(DeathPoint.plugin().getDataFolder(), "lang/" + name);
+       reload();
+    }
+
+    public void reload() {
+        DeathPoint.plugin().saveTranslations();
 
         try {
             if (!file.exists() && !file.createNewFile()) throw new IOException();
