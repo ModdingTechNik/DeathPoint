@@ -1,10 +1,1 @@
-messages:
-  PlayerDeathAtLocation:
-    broadcast: '<player> died at <green><location></green>'
-    components:
-      player:
-        suggest: '/tell <name> '
-      location:
-        template: '[<x>, <y>, <z>]'
-        hover: 'Click to suggest teleport command'
-        suggest: '/tp <x> <y> <z>'
+lang: 'en_us.yml'

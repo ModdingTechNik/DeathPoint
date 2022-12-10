@@ -1,0 +1,9 @@
+PlayerDeathAtLocation:
+  broadcast: '<player> умер по <green><location></green>'
+  components:
+    player:
+      suggest: '/tell <name> '
+    location:
+      template: '[<x>, <y>, <z>]'
+      hover: 'Нажмите, чтобы предложить команду телепортации'
+      suggest: '/tp @s <x> <y> <z>'

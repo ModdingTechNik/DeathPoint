@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import ua.wgs.mcs.deathpoint.DeathPoint;
+import ua.wgs.mcs.deathpoint.translation.TranslationConfig;
 
 public final class OnPlayerDeathEventHandler implements Listener {
 
@@ -20,26 +21,13 @@ public final class OnPlayerDeathEventHandler implements Listener {
         Player player = e.getPlayer();
         Server server = player.getServer();
         Location playerLocation = player.getLocation();
+        TranslationConfig translation = DeathPoint.getTranslation();
 
-        String broadcastTemplate = DeathPoint.getPlugin().getConfig().getString(
-                "messages.PlayerDeathAtLocation.broadcast",
-                "messages.PlayerDeathAtLocation.broadcast");
-
-        String playerSuggestTemplate = DeathPoint.getPlugin().getConfig().getString(
-                "messages.PlayerDeathAtLocation.components.player.suggest",
-                "messages.PlayerDeathAtLocation.components.player.suggest");
-
-        String locationTemplate = DeathPoint.getPlugin().getConfig().getString(
-                "messages.PlayerDeathAtLocation.components.location.template",
-                "messages.PlayerDeathAtLocation.components.location.template");
-
-        String locationHoverTemplate = DeathPoint.getPlugin().getConfig().getString(
-                "messages.PlayerDeathAtLocation.components.location.hover",
-                "messages.PlayerDeathAtLocation.components.location.hover");
-
-        String locationSuggestTemplate = DeathPoint.getPlugin().getConfig().getString(
-                "messages.PlayerDeathAtLocation.components.location.suggest",
-                "messages.PlayerDeathAtLocation.components.location.suggest");
+        String broadcastTemplate = translation.getString("PlayerDeathAtLocation.broadcast");
+        String playerSuggestTemplate = translation.getString("PlayerDeathAtLocation.components.player.suggest");
+        String locationTemplate = translation.getString("PlayerDeathAtLocation.components.location.template");
+        String locationHoverTemplate = translation.getString("PlayerDeathAtLocation.components.location.hover");
+        String locationSuggestTemplate = translation.getString("PlayerDeathAtLocation.components.location.suggest");
 
         String playerSuggest = playerSuggestTemplate.replace("<name>", player.getName());
 
