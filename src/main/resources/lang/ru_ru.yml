@@ -15,3 +15,7 @@ DeathPoint:
   reload:
     config: 'DeathPoint конфигурация успешно перезагружена'
     translation: 'DeathPoint перевод успешно перезагружен'
+  language:
+    current: 'DeathPoint текущий язык <language>'
+    notFound: '<red>DeathPoint язык не найден'
+    change: 'DeathPoint язык успешно изменен'

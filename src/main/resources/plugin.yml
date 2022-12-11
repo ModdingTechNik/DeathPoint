@@ -10,5 +10,7 @@ website: https://empty.null
 commands:
   deathpoint:
     description: 'deathpoint plugin management'
-    usage: '/deathpoint reload [config|translation]'
+    usage: |
+      /deathpoint reload (config|translation)
+      /deathpoint language (set) <file>
     permission: 'deathpoint.deathpoint'

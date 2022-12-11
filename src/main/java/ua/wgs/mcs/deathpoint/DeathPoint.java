@@ -54,6 +54,12 @@ public final class DeathPoint extends JavaPlugin {
         saveFile("lang/ru_ru.yml");
     }
 
+    public void setLanguage(String file) {
+        getConfig().set("lang", file);
+        saveConfig();
+        reloadConfiguration();
+    }
+
     public void reloadConfiguration() {
         saveFile("config.yml");
         reloadConfig();
