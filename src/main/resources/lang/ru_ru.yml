@@ -1,12 +1,16 @@
 PlayerDeathAtLocation:
-  broadcast: '<player> умер по координатам <green><location></green>'
+  broadcast: '<player> умер по координатам <green><location></green> в <world>'
   components:
     player:
       suggest: '/tell <name> '
     location:
       template: '[<x>, <y>, <z>]'
       hover: 'Нажмите, чтобы предложить команду телепортации'
-      suggest: '/tp @s <x> <y> <z>'
+      suggest: '/execute in <world> run tp @s <x> <y> <z>'
+    world:
+      overworld: '<aqua>обычном мире'
+      the_nether: '<red>аду'
+      the_end: '<yellow>энде'
 DeathPoint:
   reload:
     config: 'DeathPoint конфигурация успешно перезагружена'
